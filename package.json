@@ -6,6 +6,11 @@
         "com.unity.animation.rigging":"1.3.0"
     },
     "samples":[
+		 {
+            "displayName": "Scripts",
+            "description": "Character Expressions classes",
+            "path": "Samples/Scripts"
+        },
 		{
             "displayName": "Sample Scenes",
             "description": "Some sample scenes",
