@@ -6,11 +6,6 @@
         "com.unity.animation.rigging":"1.3.0"
     },
     "samples":[
-        {
-            "displayName": "Sample Character",
-            "description": "A sample 3D rigged model",
-            "path": "Samples/Sample Character"
-        },
 		 {
             "displayName": "Scripts",
             "description": "Character Expressions classes",

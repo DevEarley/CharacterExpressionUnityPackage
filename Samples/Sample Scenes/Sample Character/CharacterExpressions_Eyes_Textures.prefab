@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4188313463431244150}
-  - component: {fileID: 7629491440690812993}
+  - component: {fileID: 5257011468778862997}
   m_Layer: 0
   m_Name: CharacterExpressions_Eyes_Textures
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7629491440690812993
+--- !u!114 &5257011468778862997
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,18 +41,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 3894926146633567600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e7cc5a93b13d2e4e87fedd23a6d3cf8, type: 3}
+  m_Script: {fileID: 11500000, guid: 756500d035c36224aaf1a39e2fbe3942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Angry: {fileID: 2800000, guid: f9b08965e3a398745ad469d519a37598, type: 3}
-  Confused: {fileID: 2800000, guid: f9b08965e3a398745ad469d519a37598, type: 3}
-  Sad: {fileID: 2800000, guid: d408c231234a0dc4381996dc9532da82, type: 3}
-  Neutral: {fileID: 2800000, guid: 4d790639b18903c42a4d2e4f11fed61d, type: 3}
-  Sleeping: {fileID: 2800000, guid: f743594b041de094991f06d3ca7cbd41, type: 3}
-  Happy: {fileID: 2800000, guid: 48944eaaf81530a4f91001ee42408069, type: 3}
-  Angry_Emission: {fileID: 2800000, guid: fb0ba877c44949f4883a2f5c01c780d9, type: 3}
-  Confused_Emission: {fileID: 2800000, guid: fb0ba877c44949f4883a2f5c01c780d9, type: 3}
-  Sad_Emission: {fileID: 2800000, guid: a257c29eb0bb5d94089131836c424a2e, type: 3}
-  Neutral_Emission: {fileID: 2800000, guid: 073571ba6d3afc5408d6abd3bc07694e, type: 3}
-  Sleeping_Emission: {fileID: 2800000, guid: 92f9b46424eac1d44838eed1548edfee, type: 3}
-  Happy_Emission: {fileID: 2800000, guid: 3ee49120b27546c43b327c1b0240bef1, type: 3}
+  Angry: {fileID: 2800000, guid: 5f0b8573c85fe9149986e72151a36c10, type: 3}
+  Confused: {fileID: 2800000, guid: 5f0b8573c85fe9149986e72151a36c10, type: 3}
+  Sad: {fileID: 2800000, guid: b5277719ae7cac34f826c7a014b3ec0c, type: 3}
+  Neutral: {fileID: 2800000, guid: a166c7d4c29cd934a8eeafb95ae68632, type: 3}
+  Sleeping: {fileID: 2800000, guid: 4ff0efb3fd8a77a4baec14fdcbae561d, type: 3}
+  Happy: {fileID: 2800000, guid: 86c436fa48f8bd84db44337e14ad8cdf, type: 3}
+  Angry_Emission: {fileID: 2800000, guid: c56071605d3e8ed459b2c603bde555b3, type: 3}
+  Confused_Emission: {fileID: 2800000, guid: c56071605d3e8ed459b2c603bde555b3, type: 3}
+  Sad_Emission: {fileID: 2800000, guid: 93532e4000451e14ca58746dd0cd212f, type: 3}
+  Neutral_Emission: {fileID: 2800000, guid: f5d8d6a677d58ca46bf1f54cfda26771, type: 3}
+  Sleeping_Emission: {fileID: 2800000, guid: 4c24135f04fada744bacfdd2716e7960, type: 3}
+  Happy_Emission: {fileID: 2800000, guid: ced0082c664a61d498e02dc60c1c0b62, type: 3}
