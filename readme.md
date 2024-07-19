@@ -1,6 +1,12 @@
 # Character Expressions for Unity3D
 This package includes two systems for animating character expressions.One for animiating the jaw and one for the eyes. You can use behaviours and animators to control them or you can use the timeline.
 
+## Add Package to unity project
+Go to ```Window > Package Manager > The plus sign in the upper left > "Install Package from git URL"``` and paste:
+```
+https://github.com/DevEarley/CharacterExpressionUnityPackage.git
+```
+
 ## Setup - Jaw
 You may use the CharacterExpression IK Rig builder to quickly setup the rig needed for the jaw. 
 

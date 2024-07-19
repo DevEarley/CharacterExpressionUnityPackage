@@ -28,7 +28,7 @@ namespace CharacterExpressions
         {
             //Debug.Log("BLINK | START");
 
-            if (EyelidMat == null)
+            if (EyelidMat == null && mesh.sharedMaterials.Length < MaterialIndex-1)
             {
                 EyelidMat = mesh.sharedMaterials[MaterialIndex];
                 //Debug.Log("BLINK | ASSIGN EYELID MAT");

@@ -21,7 +21,7 @@ namespace CharacterExpressions
     public class CharacterExpression_Eyes_PlayableClip : PlayableAsset, ITimelineClipAsset
     {
         public CharacterEyeExpressions expression;
-        public int MaterialIndex = 3;
+        public int MaterialIndex = 1;
         public CharacterExpression_Eyes_Textures EyelidTextures;
 
         public ClipCaps clipCaps

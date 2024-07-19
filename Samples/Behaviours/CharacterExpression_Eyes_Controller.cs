@@ -16,7 +16,7 @@ namespace CharacterExpressions
     
         public float Intensity = 1.0f;
 
-        public int MaterialIndex = 3;
+        public int MaterialIndex = 1;
         private float Blink_TimeToWaitLifetime = 0.0f;
         private float Blink_Lifetime = 0.0f;
         private float[] Blink_TimesToWait = { 0.2f, 2.0f, 0.2f, 4.0f, 6.0f, 0.2f, 4.0f };
