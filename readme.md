@@ -6,7 +6,7 @@ Go to ```Window > Package Manager > The plus sign in the upper left > "Install P
 ```
 https://github.com/DevEarley/CharacterExpressionUnityPackage.git
 ```
-
+![https://i.imgur.com/eDtOOIa.gif](https://i.imgur.com/eDtOOIa.gif)
 ## Setup - Jaw
 You may use the CharacterExpression IK Rig builder to quickly setup the rig needed for the jaw. 
 
