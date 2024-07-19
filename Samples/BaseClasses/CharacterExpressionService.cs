@@ -42,7 +42,7 @@ namespace CharacterExpressions
             }
         }
 
-        public static void UpdateJaw(GameObject _JawBone,
+        public static void UpdateJaw(GameObject _JawIKRig_Target,
             bool _stopTalking,
             float _Intensity_Scale_IN,
             float _Previous_Scale_IN,
@@ -86,7 +86,7 @@ namespace CharacterExpressions
                 _Previous_Scale = _Previous_Scale_IN;
                 _Orientation = _Orientation_IN;
             }
-            RotateJawBone(_JawBone, _Orientation);
+            Rotate_JawIKRig_Target(_JawIKRig_Target, _Orientation);
         }
 
         public static void ResetBlink(out float Blink_lifetime, out float Blink_TimeToWaitLifetime)
@@ -178,9 +178,9 @@ namespace CharacterExpressions
             }
         }
 
-        private static void RotateJawBone(GameObject _JawBone, float _Orientation)
+        private static void Rotate_JawIKRig_Target(GameObject _JawIKRig_Target, float _Orientation)
         {
-            _JawBone.transform.localEulerAngles = new Vector3(_Orientation, 0, 0);
+            _JawIKRig_Target.transform.localEulerAngles = new Vector3(_Orientation, 0, 0);
         }
 
         private static float CloseJaw(float _CurrentOrientation, float _IdleOffset, float _Speed)

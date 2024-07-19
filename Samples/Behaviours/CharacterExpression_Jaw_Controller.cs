@@ -4,7 +4,7 @@ namespace CharacterExpressions
 {
     public class CharacterExpression_Jaw_Controller : MonoBehaviour
     {
-        public GameObject JawBone;
+        public GameObject JawIKRig_Target;
 
         public bool Talking = true;
         public Vector2 Range = Vector2.zero;
@@ -37,7 +37,7 @@ namespace CharacterExpressions
                 CharacterExpressionService.UpdateTalkingVariablesBasedOnPreset(TalkingPreset, out Intensity, out Variability, out VariabilitySpeed, out Speed);
             }
           
-            CharacterExpressionService.UpdateJaw(JawBone,
+            CharacterExpressionService.UpdateJaw(JawIKRig_Target,
              Talking == false,
              Intensity_Scale,
              PreviousIntensity,

@@ -19,6 +19,9 @@ The all of the code in this repo is released under Creative Commons Zero. The 3D
 
 ## Todo
 ⊕ Fix blending between playable clips.
+
 ⊕ Add more presets.
+
 ⊕ Add more detail to this readme.
+
 ⊕ Create change log.

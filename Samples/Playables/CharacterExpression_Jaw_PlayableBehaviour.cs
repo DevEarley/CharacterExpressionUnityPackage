@@ -31,9 +31,9 @@ namespace CharacterExpressions
             base.OnGraphStart(playable);
         }
 
-        public void ProcessTalking(float inputWeight, GameObject JawBone) // TODO: multiply Intensity with input Weight?
+        public void ProcessTalking(float inputWeight, GameObject JawIKRig_Target) // TODO: multiply Intensity with input Weight?
         {
-            CharacterExpressionService.UpdateJaw(JawBone,
+            CharacterExpressionService.UpdateJaw(JawIKRig_Target,
                 false,
                 Variability_Scale,
                 Intensity_Scale,
@@ -52,9 +52,9 @@ namespace CharacterExpressions
         }
 
 
-        public void StopTalking(float inputWeight, GameObject JawBone) // TODO: multiply Intensity with input Weight
+        public void StopTalking(float inputWeight, GameObject JawIKRig_Target) // TODO: multiply Intensity with input Weight
         {
-            CharacterExpressionService.UpdateJaw(JawBone,
+            CharacterExpressionService.UpdateJaw(JawIKRig_Target,
                 true,
                 Variability_Scale,
                 Intensity_Scale,
