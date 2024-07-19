@@ -19,17 +19,17 @@
         {
             "displayName": "Sample Character",
             "description": "A sample 3D rigged model",
-            "path": "Samples/SampleCharacter"
+            "path": "Samples/Sample Character"
         },
 		 {
             "displayName": "Base Classes",
             "description": "Base Classes for the other Character Expressions classes",
-            "path": "Samples/BaseClasses"
+            "path": "Samples/Base Classes"
         },
 		{
             "displayName": "Sample Scenes",
             "description": "Some sample scenes",
-            "path": "Samples/SampleScenes"
+            "path": "Samples/Sample Scenes"
         }
     ]
 }
