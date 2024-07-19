@@ -5,14 +5,6 @@ using UnityEngine.Timeline;
 namespace CharacterExpressions
 {
 
-    [System.Serializable]
-    public enum CharacterExpression_Jaw_TalkingPresets
-    {
-        Custom,
-        Chatty1,
-        Chatty2,
-        LessFrequentChat
-    }
 
     [Serializable]
     public class CharacterExpression_Jaw_PlayableClip : PlayableAsset, ITimelineClipAsset

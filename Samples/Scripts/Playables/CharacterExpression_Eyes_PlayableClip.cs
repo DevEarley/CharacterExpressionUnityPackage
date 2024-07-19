@@ -6,17 +6,7 @@ using UnityEngine.Timeline;
 namespace CharacterExpressions
 {
 
-    [System.Serializable]
-    public enum CharacterEyeExpressions
-    {
-        Neutral,
-        Happy,
-        Sad,
-        Angry,
-        Confused,
-        Sleeping
-    }
-
+  
     [Serializable]
     public class CharacterExpression_Eyes_PlayableClip : PlayableAsset, ITimelineClipAsset
     {

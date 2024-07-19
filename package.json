@@ -7,24 +7,14 @@
     },
     "samples":[
         {
-            "displayName": "Playables",
-            "description": "Playables and Tracks for timeline integration",
-            "path": "Samples/Playables"
-        },
-        {
-            "displayName": "Behaviours",
-            "description": "Eye and Jaw Controllers for usage outside of timelines",
-            "path": "Samples/Behaviours"
-        },
-        {
             "displayName": "Sample Character",
             "description": "A sample 3D rigged model",
             "path": "Samples/Sample Character"
         },
 		 {
-            "displayName": "Base Classes",
-            "description": "Base Classes for the other Character Expressions classes",
-            "path": "Samples/Base Classes"
+            "displayName": "Scripts",
+            "description": "Character Expressions classes",
+            "path": "Samples/Scripts"
         },
 		{
             "displayName": "Sample Scenes",

@@ -4,6 +4,26 @@ using UnityEngine;
 
 namespace CharacterExpressions
 {
+
+    [System.Serializable]
+    public enum CharacterEyeExpressions
+    {
+        Neutral,
+        Happy,
+        Sad,
+        Angry,
+        Confused,
+        Sleeping
+    }
+    [System.Serializable]
+    public enum CharacterExpression_Jaw_TalkingPresets
+    {
+        Custom,
+        Chatty1,
+        Chatty2,
+        LessFrequentChat
+    }
+
     public static class CharacterExpressionService
     {
         // private const string TextureNameInShader_Base = "_BaseMap"; // is different from shader to shader. URP/Lit uses "_BaseMap"
