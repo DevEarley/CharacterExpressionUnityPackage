@@ -10,11 +10,7 @@
             "displayName": "Scripts",
             "description": "Character Expressions classes",
             "path": "Samples/Scripts"
-        },
-		{
-            "displayName": "Sample Scenes",
-            "description": "Some sample scenes",
-            "path": "Samples/Sample Scenes"
         }
+	
     ]
 }
