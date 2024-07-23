@@ -26,9 +26,7 @@ namespace CharacterExpressions
 
     public static class CharacterExpressionService
     {
-        // private const string TextureNameInShader_Base = "_BaseMap"; // is different from shader to shader. URP/Lit uses "_BaseMap"
-         private const string TextureNameInShader_Base = "_MainTex"; 
-        private const string TextureNameInShader_Emission = "_EmissionMap";
+
 
         public static void UpdateTalkingVariablesBasedOnPreset(
             CharacterExpression_Jaw_TalkingPresets TalkingPreset,
@@ -171,29 +169,35 @@ namespace CharacterExpressions
             switch (CharacterExpression)
             {
                 case CharacterEyeExpressions.Angry:
-                    EyelidMat.SetTexture(TextureNameInShader_Base, EyelidTextures.Angry);
-                    EyelidMat.SetTexture(TextureNameInShader_Emission, EyelidTextures.Angry_Emission);
+                    EyelidMat.SetTexture(EyelidTextures.BaseTexture_NameInShader, EyelidTextures.Angry);
+                    EyelidMat.SetTexture(EyelidTextures.EmissionTexture_NameInShader, EyelidTextures.Angry_Emission);
+                    EyelidMat.SetTexture(EyelidTextures.DetailMaskTexture_NameInShader, EyelidTextures.Angry_Mask);
                     break;
                 case CharacterEyeExpressions.Sleeping:
-                    EyelidMat.SetTexture(TextureNameInShader_Base, EyelidTextures.Sleeping);
-                    EyelidMat.SetTexture(TextureNameInShader_Emission, EyelidTextures.Sleeping_Emission);
+                    EyelidMat.SetTexture(EyelidTextures.BaseTexture_NameInShader, EyelidTextures.Sleeping);
+                    EyelidMat.SetTexture(EyelidTextures.EmissionTexture_NameInShader, EyelidTextures.Sleeping_Emission);
+                    EyelidMat.SetTexture(EyelidTextures.DetailMaskTexture_NameInShader, EyelidTextures.Sleeping_Mask);
                     break;
                 case CharacterEyeExpressions.Sad:
-                    EyelidMat.SetTexture(TextureNameInShader_Base, EyelidTextures.Sad);
-                    EyelidMat.SetTexture(TextureNameInShader_Emission, EyelidTextures.Sad_Emission);
+                    EyelidMat.SetTexture(EyelidTextures.BaseTexture_NameInShader, EyelidTextures.Sad);
+                    EyelidMat.SetTexture(EyelidTextures.EmissionTexture_NameInShader, EyelidTextures.Sad_Emission);
+                    EyelidMat.SetTexture(EyelidTextures.DetailMaskTexture_NameInShader, EyelidTextures.Sad_Mask);
                     break;
                 case CharacterEyeExpressions.Happy:
-                    EyelidMat.SetTexture(TextureNameInShader_Base, EyelidTextures.Happy);
-                    EyelidMat.SetTexture(TextureNameInShader_Emission, EyelidTextures.Happy_Emission);
+                    EyelidMat.SetTexture(EyelidTextures.BaseTexture_NameInShader, EyelidTextures.Happy);
+                    EyelidMat.SetTexture(EyelidTextures.EmissionTexture_NameInShader, EyelidTextures.Happy_Emission);
+                    EyelidMat.SetTexture(EyelidTextures.DetailMaskTexture_NameInShader, EyelidTextures.Happy_Mask);
                     break;
                 case CharacterEyeExpressions.Confused:
-                    EyelidMat.SetTexture(TextureNameInShader_Base, EyelidTextures.Confused);
-                    EyelidMat.SetTexture(TextureNameInShader_Emission, EyelidTextures.Confused_Emission);
+                    EyelidMat.SetTexture(EyelidTextures.BaseTexture_NameInShader, EyelidTextures.Confused);
+                    EyelidMat.SetTexture(EyelidTextures.EmissionTexture_NameInShader, EyelidTextures.Confused_Emission);
+                    EyelidMat.SetTexture(EyelidTextures.DetailMaskTexture_NameInShader, EyelidTextures.Confused_Mask);
                     break;
                 default:
                 case CharacterEyeExpressions.Neutral:
-                    EyelidMat.SetTexture(TextureNameInShader_Base, EyelidTextures.Neutral);
-                    EyelidMat.SetTexture(TextureNameInShader_Emission, EyelidTextures.Neutral_Emission);
+                    EyelidMat.SetTexture(EyelidTextures.BaseTexture_NameInShader, EyelidTextures.Neutral);
+                    EyelidMat.SetTexture(EyelidTextures.EmissionTexture_NameInShader, EyelidTextures.Neutral_Emission);
+                    EyelidMat.SetTexture(EyelidTextures.DetailMaskTexture_NameInShader, EyelidTextures.Neutral_Mask);
                     break;
             }
         }
@@ -205,7 +209,6 @@ namespace CharacterExpressions
 
         private static float CloseJaw(float _CurrentOrientation, float _IdleOffset, float _Speed)
         {
-            //Debug.Log("CloseJaw");
             var _Orientation = Mathf.Lerp(_CurrentOrientation, _IdleOffset, Time.deltaTime * _Speed);
             return _Orientation;
         }
@@ -227,7 +230,7 @@ namespace CharacterExpressions
             return _Orientation;
         }
 
-        public static void UpdateEyeTextureOffset(float Blink_Lifetime,float speed,Material EyelidMat)
+        public static void UpdateEyeTextureOffset(float Blink_Lifetime,float speed,Material EyelidMat, CharacterExpression_Eyes_Textures EyelidTextures)
         {
             var numberOfFrames = 4.0f;
             var offsetUnit = 1.0f / numberOfFrames;
@@ -239,8 +242,8 @@ namespace CharacterExpressions
             var cleanDofATx10 = dofATx10 - modOfdofATx10;
             var roundedDecimalOffset = cleanDofATx10 / 10.0f;
             var offset = new Vector2(roundedDecimalOffset, 0.0f);
-            EyelidMat.SetTextureOffset(TextureNameInShader_Base, offset);
-            EyelidMat.SetTextureOffset(TextureNameInShader_Emission, offset);
+            EyelidMat.SetTextureOffset(EyelidTextures.BaseTexture_NameInShader, offset);
+            EyelidMat.SetTextureOffset(EyelidTextures.EmissionTexture_NameInShader, offset);
         }      
     }
 }
