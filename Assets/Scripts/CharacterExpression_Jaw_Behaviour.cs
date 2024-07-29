@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace CharacterExpressions
 {
-    public class CharacterExpression_Jaw_Controller : MonoBehaviour
+    public class CharacterExpression_Jaw_Behaviour : MonoBehaviour
     {
         public GameObject JawIKRig_Target;
 

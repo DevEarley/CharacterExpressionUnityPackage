@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace CharacterExpressions
 {
-    public class CharacterExpression_Eyes_Controller : MonoBehaviour
+    public class CharacterExpression_Eyes_Behaviour : MonoBehaviour
     {
         
         public GameObject EyeLids;
