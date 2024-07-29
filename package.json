@@ -7,9 +7,9 @@
     },
     "samples":[
 		 {
-            "displayName": "Scripts",
-            "description": "Character Expressions classes",
-            "path": "Samples/Scripts"
+            "displayName": "Character",
+            "description": "Sample rigged character with UV textures for eyes.",
+            "path": "Samples/Character"
         }
 	
     ]
