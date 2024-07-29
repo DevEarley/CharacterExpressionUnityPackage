@@ -10,6 +10,10 @@
             "displayName": "Character",
             "description": "Sample rigged character with UV textures for eyes.",
             "path": "Samples/Character"
+        }, {
+            "displayName": "Scripts",
+            "description": "Scripts required to run. These must be included.",
+            "path": "Samples/Scripts"
         }
 	
     ]
