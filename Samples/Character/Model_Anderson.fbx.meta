@@ -3,17 +3,7 @@ guid: d785efc622c38ac438131fcfbac2d6b0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_Anderson_Body
-    second: {fileID: 2100000, guid: c64d3235e62d0934aad6ce8facda1a53, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_Player_Eyelid
-    second: {fileID: 2100000, guid: 80c448a35bbd3e245b7c746ccb831da0, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
