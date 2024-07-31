@@ -4,16 +4,13 @@ namespace CharacterExpressions
 {
     public class CharacterExpression_Eyes_Behaviour : MonoBehaviour
     {
-        
         public GameObject EyeLids;
         private Material SharedMat;
         public CharacterExpression_Eyes_Textures Textures;
-
-  
-        private CharacterEyeExpressions CurrentCharacterExpression = CharacterEyeExpressions.Neutral;
+        private CharacterEyeExpressions CurrentCharacterExpression =
+            CharacterEyeExpressions.Neutral;
         public CharacterEyeExpressions CharacterExpression = CharacterEyeExpressions.Neutral;
 
-    
         public float Intensity = 1.0f;
 
         public int MaterialIndex = 1;
@@ -26,31 +23,62 @@ namespace CharacterExpressions
         void Start()
         {
             CurrentCharacterExpression = CharacterExpression;
-            
-            SharedMat = EyeLids.GetComponent<SkinnedMeshRenderer>().sharedMaterials[MaterialIndex];
-            CharacterExpressionService.UpdateCharacterExpression(CharacterExpression, SharedMat, Textures);
+            if (SharedMat == null)
+            {
+                SharedMat = EyeLids.GetComponent<SkinnedMeshRenderer>().sharedMaterials[
+                    MaterialIndex
+                ];
+            }
+            if (SharedMat == null)
+            {
+                SharedMat = EyeLids.GetComponent<SkinnedMeshRenderer>().materials[MaterialIndex];
+            }
+            CharacterExpressionService.UpdateCharacterExpression(
+                CharacterExpression,
+                SharedMat,
+                Textures
+            );
         }
 
         void Update()
         {
-        
+            if (SharedMat == null)
+            {
+                SharedMat = EyeLids.GetComponent<SkinnedMeshRenderer>().sharedMaterials[
+                    MaterialIndex
+                ];
+            }
+            if (SharedMat == null)
+            {
+                SharedMat = EyeLids.GetComponent<SkinnedMeshRenderer>().materials[MaterialIndex];
+            }
             if (CurrentCharacterExpression != CharacterExpression)
             {
                 CurrentCharacterExpression = CharacterExpression;
-                CharacterExpressionService.UpdateCharacterExpression(CharacterExpression, SharedMat, Textures);
-
+                CharacterExpressionService.UpdateCharacterExpression(
+                    CharacterExpression,
+                    SharedMat,
+                    Textures
+                );
             }
-            var shouldAnimateBlink = CharacterExpressionService.Blink(Blink_Lifetime,
-            out Blink_Lifetime,
-            Blink_TimeToWaitLifetime,
-            out Blink_TimeToWaitLifetime,
-             Blink_TimeToWaitIndex,
-            out Blink_TimeToWaitIndex,
-             Blink_TimesToWait,
-             Blink_speed);
+            var shouldAnimateBlink = CharacterExpressionService.Blink(
+                Blink_Lifetime,
+                out Blink_Lifetime,
+                Blink_TimeToWaitLifetime,
+                out Blink_TimeToWaitLifetime,
+                Blink_TimeToWaitIndex,
+                out Blink_TimeToWaitIndex,
+                Blink_TimesToWait,
+                Blink_speed
+            );
             if (shouldAnimateBlink)
             {
-                CharacterExpressionService.UpdateEyeTextureOffset(Blink_Lifetime, Blink_speed, SharedMat, Textures);
+                CharacterExpressionService.UpdateEyeTextureOffset(
+                    Blink_Lifetime,
+                    Blink_speed,
+                    SharedMat,
+                    Textures
+                );
             }
         }
 
