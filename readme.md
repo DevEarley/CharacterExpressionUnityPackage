@@ -1,7 +1,8 @@
 # Character Expressions for Unity3D
-> NOTE: This package is a WIP and may be broken. Use at your own risk.
+> NOTE: This package is a WIP. Use at your own risk.
 
-Version 1.0.0 (alpha)
+![Using the timeline to animate blinking and talking](https://i.imgur.com/l4inYO2.gif)
+Version 1.0.1 (alpha)
 
 The purpose of this package is to assist animators from animating expressions and talking by hand. This package includes two systems for animating character expressions. One for animiating the jaw and one for the eyes. This package contains behaviours, playables and utilities for controlling eye and jaw expressions.
 
