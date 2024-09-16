@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using static CharacterExpression_Jaw_Configuration;
 
 namespace CharacterExpressions
 {
-
     [System.Serializable]
     public enum CharacterEyeExpressions
     {
@@ -15,96 +13,79 @@ namespace CharacterExpressions
         Confused,
         Sleeping
     }
-    [System.Serializable]
-    public enum CharacterExpression_Jaw_TalkingPresets
-    {
-        Custom,
-        Chatty1,
-        Chatty2,
-        LessFrequentChat
-    }
 
     public static class CharacterExpressionService
     {
 
+        public static void UpdateJaw_WithConfig(CharacterExpression_Jaw_Configuration Config,
+        GameObject _JawIKRig_Target,
+        bool _stopTalking,
 
-        public static void UpdateTalkingVariablesBasedOnPreset(
-            CharacterExpression_Jaw_TalkingPresets TalkingPreset,
-            out float Intensity,
-            out float Variability,
-            out float VariabilitySpeed,
-            out float Speed)
+        float Current_Orientation_IN,
+
+        out float Current_Orientation_OUT,
+        float time,
+        float control
+        )
         {
-            switch (TalkingPreset)
-            {
-                default:
-               
-                case CharacterExpression_Jaw_TalkingPresets.Chatty1:
-                    Intensity = 0.16f;
-                    Variability = 3.2f;
-                    VariabilitySpeed = 0.64f;
-                    Speed = 2.97f;
-                    break;
-                case CharacterExpression_Jaw_TalkingPresets.Chatty2:
-                    Intensity = 0.16f;
-                    Variability = 2.2f;
-                    VariabilitySpeed = 0.64f;
-                    Speed = 2.97f;
-                    break;
-                case CharacterExpression_Jaw_TalkingPresets.LessFrequentChat:
-                    Intensity = 0.37f;
-                    Variability = 2.15f;
-                    VariabilitySpeed = 1.49f;
-                    Speed = 0.5f;
-                    break;
-            }
+            UpdateJaw(_JawIKRig_Target,
+            _stopTalking,
+            Current_Orientation_IN,
+            Config.JawRange,
+            Config.Amplitude2,
+            Config.Frequency2,
+            Config.Frequency,
+            Config.Amplitude,
+            out Current_Orientation_OUT,
+            Config.Axis,
+            Config.ValueClamp,
+            time, control);
         }
 
-        public static void UpdateJaw(GameObject _JawIKRig_Target,
-            bool _stopTalking,
-            float _Intensity_Scale_IN,
-            float _Previous_Scale_IN,
-            float _Orientation_IN,
-            float _Variability_Scale,
-            Vector2 _Range,
-            float _Variability,
-            float _VariabilitySpeed,
-            float _Speed,
-            float _VariabilitySpeed_Scale,
-            float _Speed_Scale,
-            float _Intensity,
-            out float _Intensity_Scale,
-            out float _Previous_Scale,
-            out float _Orientation)
+        public static void UpdateJaw(
+        GameObject _JawIKRig_Target,
+        bool _stopTalking,
+        float Current_Orientation_IN,
+        Vector2 JawRange,
+        float Amplitude2,
+        float Frequency2,
+        float Amplitude,
+        float Frequency,
+
+        out float Current_Orientation_OUT,
+        CharacterExpression_Jaw_Configuration_Axis axis,
+        Vector2 ValueClamp,
+        float time,
+        float control
+
+        )
         {
-            if (_stopTalking == true && _Intensity_Scale_IN > 0.0f)
+            if (_stopTalking == true)
             {
-                _Previous_Scale = _Intensity_Scale_IN;
-                _Intensity_Scale = 0.0f;
-                _Orientation = CloseJaw(_Orientation_IN, _Range.x, _Speed);
+                //Previous_Control_OUT = Control_IN;
+                //Control_OUT = 0.0f;
+                Current_Orientation_OUT = CloseJaw(Current_Orientation_IN, JawRange.x, control);
             }
-            else if (_stopTalking == false)
+            else
             {
-                _Intensity_Scale = _Previous_Scale_IN;
-                _Previous_Scale = _Previous_Scale_IN;
-                _Orientation = 
-                    CharacterExpressionService.MoveJawUpAndDown(_VariabilitySpeed,
-                        _VariabilitySpeed_Scale,
-                        _Variability,
-                        _Variability_Scale,
-                        _Speed,
-                        _Speed_Scale,
-                        _Intensity,
-                        _Previous_Scale,
-                        _Range);
+                //Control_OUT = Previous_Control_IN;
+                //Previous_Control_OUT = Previous_Control_IN;
+                Current_Orientation_OUT =
+                CharacterExpressionService.MoveJawUpAndDown(Frequency2,
+                Amplitude2,
+                Amplitude,
+                Frequency,
+                ValueClamp,
+                JawRange,
+                time);
             }
-            else 
-            { 
-                _Intensity_Scale = _Intensity_Scale_IN;
-                _Previous_Scale = _Previous_Scale_IN;
-                _Orientation = _Orientation_IN;
-            }
-            Rotate_JawIKRig_Target(_JawIKRig_Target, _Orientation);
+            //else
+            //{
+            //    Control_OUT = Control_IN;
+            //    Previous_Control_OUT = Previous_Control_IN;
+            //    Current_Orientation_OUT = Current_Orientation_IN;
+            //}
+            Rotate_JawIKRig_Target(_JawIKRig_Target, Current_Orientation_OUT, axis);
         }
 
         public static void ResetBlink(out float Blink_lifetime, out float Blink_TimeToWaitLifetime)
@@ -114,19 +95,19 @@ namespace CharacterExpressions
         }
 
         public static bool Blink(
-            float Blink_Lifetime_IN,
-            out float Blink_Lifetime,
-            float Blink_TimeToWaitLifetime_IN,
-            out float Blink_TimeToWaitLifetime,
-            int Blink_TimeToWaitIndex_IN,
-            out int Blink_TimeToWaitIndex,
-            float[] Blink_TimesToWait,
-            float speed)
+        float Blink_Lifetime_IN,
+        out float Blink_Lifetime,
+        float Blink_TimeToWaitLifetime_IN,
+        out float Blink_TimeToWaitLifetime,
+        int Blink_TimeToWaitIndex_IN,
+        out int Blink_TimeToWaitIndex,
+        float[] Blink_TimesToWait,
+        float speed)
 
         {
             if (Blink_Lifetime_IN == 0.0f) // waiting to blink
             {
-                Blink_TimeToWaitLifetime_IN = Blink_TimeToWaitLifetime_IN + Time.deltaTime; 
+                Blink_TimeToWaitLifetime_IN = Blink_TimeToWaitLifetime_IN + Time.deltaTime;
                 if (Blink_TimeToWaitLifetime_IN > Blink_TimesToWait[Blink_TimeToWaitIndex_IN]) // ready to blink
                 {
                     //iterate index
@@ -202,35 +183,58 @@ namespace CharacterExpressions
             }
         }
 
-        private static void Rotate_JawIKRig_Target(GameObject _JawIKRig_Target, float _Orientation)
+        public static void Rotate_JawIKRig_Target(GameObject _JawIKRig_Target, float _Orientation, CharacterExpression_Jaw_Configuration_Axis axis)
         {
-            _JawIKRig_Target.transform.localEulerAngles = new Vector3(_Orientation, 0, 0);
+            switch (axis)
+            {
+                case CharacterExpression_Jaw_Configuration_Axis.Unselected:
+                    break;
+                case CharacterExpression_Jaw_Configuration_Axis.X:
+                    _JawIKRig_Target.transform.localEulerAngles = new Vector3(_Orientation, 0, 0);
+
+                    break;
+                case CharacterExpression_Jaw_Configuration_Axis.Y:
+                    _JawIKRig_Target.transform.localEulerAngles = new Vector3(0, _Orientation, 0);
+                    break;
+
+                case CharacterExpression_Jaw_Configuration_Axis.Z:
+                    _JawIKRig_Target.transform.localEulerAngles = new Vector3(0, 0, _Orientation);
+                    break;
+            }
         }
 
-        private static float CloseJaw(float _CurrentOrientation, float _IdleOffset, float _Speed)
+        public static float CloseJaw(float _CurrentOrientation, float _IdleOffset, float control)
         {
-            var _Orientation = Mathf.Lerp(_CurrentOrientation, _IdleOffset, Time.deltaTime * _Speed);
+            var _Orientation = Mathf.Lerp(_CurrentOrientation, _IdleOffset, control);
             return _Orientation;
         }
 
         private static float MoveJawUpAndDown(
-            float _VariabilitySpeed,
-            float _VariabilitySpeed_Scale,
-            float _Variability,
-            float _Variability_Scale,
-            float _Speed,
-            float _Speed_Scale,
-            float _Intensity,
-            float _Intensity_Scale,
-            Vector2 _Range)
+        float Frequency2,
+        float Amplitude2,
+        float Frequency,
+        float Amplitude1,
+        Vector2 ClampValues,
+        Vector2 JawRange, float time)
         {
-            var _VariabilityOffset = Mathf.Cos(Time.time * _VariabilitySpeed * _VariabilitySpeed_Scale) * _Variability * _Variability_Scale;
-            var unclampedOffset = Mathf.Sin(Time.time * _Speed * _Speed_Scale) * ((_Intensity * _Intensity_Scale) + _VariabilityOffset);
-            var _Orientation = Mathf.Clamp(unclampedOffset, _Range.x, _Range.y);
-            return _Orientation;
+
+            //todo replace time with clip time
+            var wave1 = Mathf.Sin(time * Frequency) * Amplitude1;
+            var wave2 = Mathf.Cos(time * Frequency2) * Amplitude2;
+            var unclamped = wave2 + wave1;
+            var clamped = Mathf.Clamp(unclamped, ClampValues.x, ClampValues.y);
+            var normalized = Normalize(ClampValues.x, ClampValues.y, clamped);
+            var range = JawRange.y - JawRange.x;
+            return JawRange.x + (normalized * range);
         }
 
-        public static void UpdateEyeTextureOffset(float Blink_Lifetime,float speed,Material EyelidMat, CharacterExpression_Eyes_Textures EyelidTextures)
+        private static float Normalize(float r1, float r2, float v)
+        {
+            var range = r2 - r1;
+            if (range == 0) return v;
+            return v / range;
+        }
+        public static void UpdateEyeTextureOffset(float Blink_Lifetime, float speed, Material EyelidMat, CharacterExpression_Eyes_Textures EyelidTextures)
         {
             var numberOfFrames = 4.0f;
             var offsetUnit = 1.0f / numberOfFrames;
@@ -244,6 +248,6 @@ namespace CharacterExpressions
             var offset = new Vector2(roundedDecimalOffset, 0.0f);
             EyelidMat.SetTextureOffset(EyelidTextures.BaseTexture_NameInShader, offset);
             EyelidMat.SetTextureOffset(EyelidTextures.EmissionTexture_NameInShader, offset);
-        }      
+        }
     }
 }

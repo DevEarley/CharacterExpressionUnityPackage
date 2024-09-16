@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Playables;
+using static CharacterExpression_Jaw_Configuration;
 
 namespace CharacterExpressions
 {
@@ -8,68 +9,23 @@ namespace CharacterExpressions
     public class CharacterExpression_Jaw_PlayableBehaviour : PlayableBehaviour
     {
 
-        public CharacterExpression_Jaw_TalkingPresets talkingPreset;
-        public Vector2 Range = new Vector2(15.0f, 30.0f); // can we make this const?
-        private float Speed;
-        private float Intensity;
-        private float Variability;
-        private float VariabilitySpeed;
-        private float Intensity_Scale = 1.0f;
-        private float PreviousIntensity = 1.0f;
-        private float Orientation = 1.0f;
-        private const float Variability_Scale = 1.0f;
+        public CharacterExpression_Jaw_Configuration Config;
+        private float CurrentOrientation = 1.0f;
 
-        private const float Speed_Scale = 7.1f;
-        private const float VariabilitySpeed_Scale = 10.2f;
 
         public override void OnGraphStart(Playable playable)
         {
-            Intensity_Scale = Range.y - Range.x;
-            PreviousIntensity = Intensity_Scale;
-
-            CharacterExpressionService.UpdateTalkingVariablesBasedOnPreset(talkingPreset, out Intensity, out Variability, out VariabilitySpeed, out Speed);
             base.OnGraphStart(playable);
         }
 
-        public void ProcessTalking(float inputWeight, GameObject JawIKRig_Target) // TODO: multiply Intensity with input Weight?
+        public void ProcessTalking( GameObject JawIKRig_Target, float time, float weight) 
         {
-            CharacterExpressionService.UpdateJaw(JawIKRig_Target,
-                false,
-                Variability_Scale,
-                Intensity_Scale,
-                PreviousIntensity,
-                Orientation,
-                Range,
-                Variability,
-                VariabilitySpeed,
-                Speed,
-                VariabilitySpeed_Scale,
-                Speed_Scale,
-                Intensity,
-                out Intensity_Scale,
-                out PreviousIntensity,
-                out Orientation);
+            if (Config == null || JawIKRig_Target == null) return;
+            var stopTalking = weight!=1.0f;
+            CharacterExpressionService.UpdateJaw_WithConfig(Config, JawIKRig_Target, stopTalking,  CurrentOrientation,  out CurrentOrientation, time, weight);
         }
 
 
-        public void StopTalking(float inputWeight, GameObject JawIKRig_Target) // TODO: multiply Intensity with input Weight
-        {
-            CharacterExpressionService.UpdateJaw(JawIKRig_Target,
-                true,
-                Variability_Scale,
-                Intensity_Scale,
-                PreviousIntensity,
-                Orientation,
-                Range,
-                Variability,
-                VariabilitySpeed,
-                Speed,
-                VariabilitySpeed_Scale,
-                Speed_Scale,
-                Intensity,
-                out Intensity_Scale,
-                out PreviousIntensity,
-                out Orientation);
-        }
+   
     }
 }

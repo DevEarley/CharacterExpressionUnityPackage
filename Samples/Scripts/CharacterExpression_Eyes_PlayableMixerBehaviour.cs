@@ -16,7 +16,6 @@ namespace CharacterExpressions
                 return;
 
             int inputCount = playable.GetInputCount();
-            //Debug.Log("Input Count : " + inputCount);
             for (int i = 0; i < inputCount; i++)
             {
                 float inputWeight = playable.GetInputWeight(i);
@@ -25,7 +24,6 @@ namespace CharacterExpressions
                 if (inputWeight > 0.0f)
                 {
                     behaviour.Blink(trackBinding);
-                    //Debug.Log(" current CharacterEyeExpressions | " + current.ToString());
                     if (current != behaviour.CharacterExpression)
                     {
                         current = behaviour.CharacterExpression;
