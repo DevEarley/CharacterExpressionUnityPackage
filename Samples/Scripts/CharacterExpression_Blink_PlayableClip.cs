@@ -9,10 +9,10 @@ namespace CharacterExpressions
 {
 
     [Serializable]
-    public class CharacterExpression_BlendShapes_PlayableClip : PlayableAsset, ITimelineClipAsset
+    public class CharacterExpression_Blink_PlayableClip : PlayableAsset, ITimelineClipAsset
     {
 
-        public CharacterExpression_BlendShapes_Configuration Config;
+        public CharacterExpression_Blink_Configuration Config;
         public ClipCaps clipCaps
         {
             get { return ClipCaps.Blending; }
@@ -20,8 +20,8 @@ namespace CharacterExpressions
 
         public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
         {
-            var playable = ScriptPlayable<CharacterExpression_BlendShapes_PlayableBehaviour>.Create(graph);
-            CharacterExpression_BlendShapes_PlayableBehaviour playableBehaviour = playable.GetBehaviour();
+            var playable = ScriptPlayable<CharacterExpression_Blink_PlayableBehaviour>.Create(graph);
+            CharacterExpression_Blink_PlayableBehaviour playableBehaviour = playable.GetBehaviour();
             playableBehaviour.Config = Config;
             return playable;
         }

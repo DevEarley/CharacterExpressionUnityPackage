@@ -39,7 +39,7 @@ namespace CharacterExpressions
                 //Debug.Log("BLINK | ASSIGN EYELID MAT");
             }
 
-            var shouldAnimateBlink = CharacterExpressionService.Blink(Blink_Lifetime,
+            var shouldAnimateBlink = CharacterExpression_Services.Blink(Blink_Lifetime,
                 out Blink_Lifetime,
                 Blink_TimeToWaitLifetime,
                 out Blink_TimeToWaitLifetime,
@@ -50,7 +50,7 @@ namespace CharacterExpressions
                 );
             if (shouldAnimateBlink)
             {
-                CharacterExpressionService.UpdateEyeTextureOffset(Blink_Lifetime, Blink_speed, EyelidMat, EyelidTextures);
+                CharacterExpression_Services.UpdateEyeTextureOffset(Blink_Lifetime, Blink_speed, EyelidMat, EyelidTextures);
             }
         }
     }

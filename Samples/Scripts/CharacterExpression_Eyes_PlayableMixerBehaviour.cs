@@ -27,7 +27,7 @@ namespace CharacterExpressions
                     if (current != behaviour.CharacterExpression)
                     {
                         current = behaviour.CharacterExpression;
-                        CharacterExpressionService.UpdateCharacterExpression(behaviour.CharacterExpression, behaviour.EyelidMat, behaviour.EyelidTextures);
+                        CharacterExpression_Services.UpdateCharacterExpression(behaviour.CharacterExpression, behaviour.EyelidMat, behaviour.EyelidTextures);
                     }
                 }
             }

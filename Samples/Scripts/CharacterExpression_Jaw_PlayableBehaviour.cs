@@ -22,7 +22,7 @@ namespace CharacterExpressions
         {
             if (Config == null || JawIKRig_Target == null) return;
             var stopTalking = weight!=1.0f;
-            CharacterExpressionService.UpdateJaw_WithConfig(Config, JawIKRig_Target, stopTalking,  CurrentOrientation,  out CurrentOrientation, time, weight);
+            CharacterExpression_Services.UpdateJaw_WithConfig(Config, JawIKRig_Target, stopTalking,  CurrentOrientation,  out CurrentOrientation, time, weight);
         }
 
 

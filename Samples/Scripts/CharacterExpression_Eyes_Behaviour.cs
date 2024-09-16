@@ -33,7 +33,7 @@ namespace CharacterExpressions
             {
                 SharedMat = EyeLids.GetComponent<SkinnedMeshRenderer>().materials[MaterialIndex];
             }
-            CharacterExpressionService.UpdateCharacterExpression(
+            CharacterExpression_Services.UpdateCharacterExpression(
                 CharacterExpression,
                 SharedMat,
                 Textures
@@ -55,13 +55,13 @@ namespace CharacterExpressions
             if (CurrentCharacterExpression != CharacterExpression)
             {
                 CurrentCharacterExpression = CharacterExpression;
-                CharacterExpressionService.UpdateCharacterExpression(
+                CharacterExpression_Services.UpdateCharacterExpression(
                     CharacterExpression,
                     SharedMat,
                     Textures
                 );
             }
-            var shouldAnimateBlink = CharacterExpressionService.Blink(
+            var shouldAnimateBlink = CharacterExpression_Services.Blink(
                 Blink_Lifetime,
                 out Blink_Lifetime,
                 Blink_TimeToWaitLifetime,
@@ -73,7 +73,7 @@ namespace CharacterExpressions
             );
             if (shouldAnimateBlink)
             {
-                CharacterExpressionService.UpdateEyeTextureOffset(
+                CharacterExpression_Services.UpdateEyeTextureOffset(
                     Blink_Lifetime,
                     Blink_speed,
                     SharedMat,
