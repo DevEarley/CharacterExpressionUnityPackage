@@ -1,6 +1,6 @@
 {
     "name":"com.mhs.characterexpressions",
-    "version":"1.0.1",
+    "version":"1.0.2",
     "dependencies": {
         "com.unity.timeline":"1.8.6",
         "com.unity.animation.rigging":"1.3.0"
