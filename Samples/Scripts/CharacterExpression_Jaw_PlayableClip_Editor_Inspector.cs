@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using CharacterExpressions;
 using System;
 using UnityEditor;
@@ -5,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 [CustomEditor(typeof(CharacterExpression_Jaw_PlayableClip))]
-public class CharacterExpression_Jaw_PlayableClip_Editor : Editor
+public class CharacterExpression_Jaw_PlayableClip_Editor_Inspector : Editor
 {
 
     public override void OnInspectorGUI()
@@ -23,5 +24,7 @@ public class CharacterExpression_Jaw_PlayableClip_Editor : Editor
         EditorUtility.SetDirty(config);
 
     }
+
 }
 
+#endif

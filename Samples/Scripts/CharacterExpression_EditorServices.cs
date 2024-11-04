@@ -22,7 +22,7 @@ public static class CharacterExpression_EditorServices
         var wave_2_color = new Color(0.3f, 0.3f, 0.3f);
         var interference_color = new Color(0.20f, 0.20f, 0.20f);
         var clamped_color = new Color(0.86f, 0.46f, 0.26f);
-        var box = new Rect((EditorGUIUtility.currentViewWidth / 2.0f) - 100, 400, 200, 200);
+        var box = new Rect(  0, 280, EditorGUIUtility.currentViewWidth-20, 200);
         Graph_DrawBackground(box);
         BlinkGraph_DrawCurves(config, wave_1_color, wave_2_color, interference_color, clamped_color, box);
     }
@@ -31,7 +31,7 @@ public static class CharacterExpression_EditorServices
     public static void OnInspectorGUI_Jaw_Config(CharacterExpression_Jaw_Configuration config)
     {
         EditorGUILayout.Space();
-        config.Mode = (CharacterExpression_Jaw_Configuration_Mode)EditorGUILayout.EnumPopup("Mode", config.Mode);
+        //config.Mode = (CharacterExpression_Jaw_Configuration_Mode)EditorGUILayout.EnumPopup("Mode", config.Mode);
         OnInspectorGUI_Jaw_ValueClamps(config);
         config.Axis = (CharacterExpression_Jaw_Configuration_Axis)EditorGUILayout.EnumPopup("Axis", config.Axis);
         config.Amplitude = EditorGUILayout.FloatField("Amplitude 1", config.Amplitude);
@@ -43,7 +43,7 @@ public static class CharacterExpression_EditorServices
         var wave_2_color = new Color(0.3f, 0.3f, 0.3f);
         var interference_color = new Color(0.20f, 0.20f, 0.20f);
         var clamped_color = new Color(0.86f, 0.46f, 0.26f);
-        var box = new Rect((EditorGUIUtility.currentViewWidth / 2.0f) - 100, 400, 200, 200);
+        var box = new Rect( 0, 280, EditorGUIUtility.currentViewWidth - 20, 200);
         Graph_DrawBackground(box);
         JawGraph_DrawCurves(config, wave_1_color, wave_2_color, interference_color, clamped_color, box);
     }
@@ -97,8 +97,8 @@ public static class CharacterExpression_EditorServices
 
     private static void JawGraph_DrawCurves(CharacterExpression_Jaw_Configuration config, Color wave_1_color, Color wave_2_color, Color interference_color, Color clamped_color, Rect box)
     {
-        var graph_zero_offset = new Vector2(0, 200);
-        var resolution = 0.05f;
+        var graph_zero_offset = new Vector2(0, 100);
+        var resolution = 0.01f;
         var scale = box.width / 4.0f;
 
         //unclamped
@@ -196,15 +196,6 @@ public static class CharacterExpression_EditorServices
         var color_light_gray = new Color(0.26f, 0.26f, 0.26f);
         var color_bright_gray = new Color(0.66f, 0.66f, 0.66f);
         EditorGUI.DrawRect(box, color_dark_gray);
-
-        //Vertical Lines
-        EditorGUI.DrawRect(new Rect(box.x + 25, box.y, 1, box.height), color_gray);
-        EditorGUI.DrawRect(new Rect(box.x + 50, box.y, 1, box.height), color_light_gray);
-        EditorGUI.DrawRect(new Rect(box.x + 75, box.y, 1, box.height), color_gray);
-        EditorGUI.DrawRect(new Rect(box.x + 100, box.y, 1, box.height), color_light_gray);
-        EditorGUI.DrawRect(new Rect(box.x + 125, box.y, 1, box.height), color_gray);
-        EditorGUI.DrawRect(new Rect(box.x + 150, box.y, 1, box.height), color_light_gray);
-        EditorGUI.DrawRect(new Rect(box.x + 175, box.y, 1, box.height), color_gray);
 
         //Horizontal Lines
 

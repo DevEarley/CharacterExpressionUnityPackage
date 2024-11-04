@@ -6,6 +6,10 @@ using static CharacterExpression_Jaw_Configuration;
 
 public static class CharacterExpression_EditorService
 {
+    public static Color wave_1_color = new Color(0.20f, 0.20f, 0.20f);
+    public static Color wave_2_color = new Color(0.3f, 0.3f, 0.3f);
+    public static Color interference_color = new Color(0.20f, 0.20f, 0.20f);
+    public static Color clamped_color = new Color(0.86f, 0.46f, 0.26f);
     public static void OnInspectorGUI_Jaw_Config(CharacterExpression_Jaw_Configuration config)
     {
         EditorGUILayout.Space();
@@ -17,13 +21,10 @@ public static class CharacterExpression_EditorService
         config.Amplitude2 = EditorGUILayout.FloatField("Amplitude 2", config.Amplitude2);
         config.Frequency2 = EditorGUILayout.FloatField("Frequency 2", config.Frequency2);
         OnInspectorGUI_JawRange(config);
-        var wave_1_color = new Color(0.20f, 0.20f, 0.20f);
-        var wave_2_color = new Color(0.3f, 0.3f, 0.3f);
-        var interference_color = new Color(0.20f, 0.20f, 0.20f);
-        var clamped_color = new Color(0.86f, 0.46f, 0.26f);
+     
         var box = new Rect((EditorGUIUtility.currentViewWidth / 2.0f) - 100, 400, 200, 200);
         JawGraph_DrawBackground(box);
-        JawGraph_DrawCurves(config, wave_1_color, wave_2_color, interference_color, clamped_color, box);
+        JawGraph_DrawCurves(config, box);
     }
     private static void OnInspectorGUI_ValueClamps(CharacterExpression_Jaw_Configuration config)
     {
@@ -57,7 +58,7 @@ public static class CharacterExpression_EditorService
         EditorGUILayout.EndHorizontal();
     }
 
-    private static void JawGraph_DrawCurves(CharacterExpression_Jaw_Configuration config, Color wave_1_color, Color wave_2_color, Color interference_color, Color clamped_color, Rect box)
+    public static void JawGraph_DrawCurves(CharacterExpression_Jaw_Configuration config, Rect box)
     {
         var graph_zero_offset = new Vector2(0, 200);
         var resolution = 0.05f;
@@ -104,17 +105,17 @@ public static class CharacterExpression_EditorService
             Handles.DrawLine(offset_point1, offset_point2);
         }
     }
-    private static float CosOfX(CharacterExpression_Jaw_Configuration config, float x)
+    public static float CosOfX(CharacterExpression_Jaw_Configuration config, float x)
     {
         return Mathf.Cos(x * config.Frequency2) * config.Amplitude2;
     }
 
-    private static float SinOfX(CharacterExpression_Jaw_Configuration config, float x)
+    public static float SinOfX(CharacterExpression_Jaw_Configuration config, float x)
     {
         return Mathf.Sin(x * config.Frequency) * config.Amplitude;
     }
 
-    private static void JawGraph_DrawBackground(Rect box)
+    public static void JawGraph_DrawBackground(Rect box)
     {
         var color_dark_gray = new Color(0.16f, 0.16f, 0.16f);
         var color_gray = new Color(0.20f, 0.20f, 0.20f);

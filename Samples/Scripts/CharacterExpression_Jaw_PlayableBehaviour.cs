@@ -21,8 +21,8 @@ namespace CharacterExpressions
         public void ProcessTalking( GameObject JawIKRig_Target, float time, float weight) 
         {
             if (Config == null || JawIKRig_Target == null) return;
-            var stopTalking = weight!=1.0f;
-            CharacterExpression_Services.UpdateJaw_WithConfig(Config, JawIKRig_Target, stopTalking,  CurrentOrientation,  out CurrentOrientation, time, weight);
+          
+            CharacterExpression_Services.UpdateJaw_WithConfig(Config, JawIKRig_Target, false,  CurrentOrientation,  out CurrentOrientation, time, weight);
         }
 
 

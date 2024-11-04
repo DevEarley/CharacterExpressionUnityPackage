@@ -195,8 +195,8 @@ namespace CharacterExpressions
 
         public static float CloseJaw(float _CurrentOrientation, float _IdleOffset, float control)
         {
-            var _Orientation = Mathf.Lerp(_CurrentOrientation, _IdleOffset, control);
-            return _Orientation;
+          //  var _Orientation = Mathf.Lerp(_CurrentOrientation, _IdleOffset, control);
+            return _IdleOffset;
         }
 
         private static float MoveJawUpAndDown(

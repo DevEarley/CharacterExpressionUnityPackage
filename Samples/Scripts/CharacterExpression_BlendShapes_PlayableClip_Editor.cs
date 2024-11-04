@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using CharacterExpressions;
 using System;
 using UnityEditor;
@@ -26,3 +27,4 @@ public class CharacterExpression_BlendShapes_PlayableClip_Editor : Editor
     }
 }
 
+#endif

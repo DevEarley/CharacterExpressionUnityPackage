@@ -6,10 +6,8 @@ using static UnityEngine.InputSystem.OnScreen.OnScreenStick;
 
 namespace CharacterExpressions
 {
-        public class CharacterExpression_Jaw_PlayableMixerBehaviour : PlayableBehaviour
+    public class CharacterExpression_Jaw_PlayableMixerBehaviour : PlayableBehaviour
     {
-    
-
         // NOTE: This function is called at runtime and edit time.  Keep that in mind when setting the values of properties.
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
@@ -33,9 +31,9 @@ namespace CharacterExpressions
                     behaviour.ProcessTalking(trackBinding, time, inputWeight);
                 }
             }
-            if(allWeightsAreZero == false)
+            if(allWeightsAreZero == true)
             {
-                trackBinding.transform.localEulerAngles = Vector3.Lerp(trackBinding.transform.localEulerAngles, Vector3.zero,0.1f);
+               trackBinding.transform.localEulerAngles = Vector3.zero;
 
 
             }

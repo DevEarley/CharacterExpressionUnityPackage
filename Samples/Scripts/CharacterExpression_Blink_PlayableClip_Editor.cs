@@ -1,4 +1,6 @@
+#if UNITY_EDITOR
 using CharacterExpressions;
+
 using System;
 using UnityEditor;
 using UnityEngine;
@@ -25,3 +27,4 @@ public class CharacterExpression_Blink_PlayableClip_Editor : Editor
     }
 }
 
+#endif
