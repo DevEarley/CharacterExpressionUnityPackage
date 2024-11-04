@@ -95,7 +95,7 @@ Each shader uses different naming conventions for it's textures. To animate thes
 ![Setting up the eye playable](https://i.imgur.com/hjMrpyP.gif)
 
 ## Credits
-3D model from the MHS project from Adroit Studios. Scripts by Alex Earley. Special Thanks to Charles Sielert & Angela Jarecki.
+3D model from the MHS project made by Carolyn Jarecki. Scripts by Alex Earley. Special Thanks to Charles Sielert, Carolyn Jarecki & Angela Jarecki.
 
 ## License
 The all of the code in this repo is released under Creative Commons Zero. The 3D model belongs to Adroit Studios.
