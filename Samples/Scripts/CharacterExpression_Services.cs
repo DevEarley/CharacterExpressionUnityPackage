@@ -39,6 +39,8 @@ namespace CharacterExpressions
             Config.Frequency2,
             Config.Frequency,
             Config.Amplitude,
+            Config.Offset,
+            Config.Offset2,
             out Current_Orientation_OUT,
             Config.Axis,
             Config.ValueClamp,
@@ -54,6 +56,8 @@ namespace CharacterExpressions
         float Frequency2,
         float Amplitude,
         float Frequency,
+        float offset,
+        float offset2,
         out float Current_Orientation_OUT,
         CharacterExpression_Jaw_Configuration_Axis axis,
         Vector2 ValueClamp,
@@ -72,6 +76,8 @@ namespace CharacterExpressions
                 Amplitude2,
                 Amplitude,
                 Frequency,
+                offset,
+                offset2,
                 ValueClamp,
                 JawRange,
                 time);
@@ -204,13 +210,15 @@ namespace CharacterExpressions
         float Amplitude2,
         float Frequency,
         float Amplitude1,
+        float offset,
+        float offset2,
         Vector2 ClampValues,
         Vector2 JawRange, float time)
         {
 
             //todo replace time with clip time
-            var wave1 = Mathf.Sin(time * Frequency) * Amplitude1;
-            var wave2 = Mathf.Cos(time * Frequency2) * Amplitude2;
+            var wave1 = Mathf.Sin((time * Frequency)+offset) * Amplitude1;
+            var wave2 = Mathf.Cos((time * Frequency2)+offset2) * Amplitude2;
             var unclamped = wave2 + wave1;
             var clamped = Mathf.Clamp(unclamped, ClampValues.x, ClampValues.y);
             var normalized = Normalize(ClampValues.x, ClampValues.y, clamped);

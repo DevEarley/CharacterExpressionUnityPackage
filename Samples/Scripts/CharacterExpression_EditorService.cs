@@ -107,12 +107,12 @@ public static class CharacterExpression_EditorService
     }
     public static float CosOfX(CharacterExpression_Jaw_Configuration config, float x)
     {
-        return Mathf.Cos(x * config.Frequency2) * config.Amplitude2;
+        return Mathf.Cos((x * config.Frequency2)+config.Offset2) * config.Amplitude2;
     }
 
     public static float SinOfX(CharacterExpression_Jaw_Configuration config, float x)
     {
-        return Mathf.Sin(x * config.Frequency) * config.Amplitude;
+        return Mathf.Sin((x * config.Frequency )+ config.Offset) * config.Amplitude;
     }
 
     public static void JawGraph_DrawBackground(Rect box)

@@ -34,8 +34,10 @@ public static class CharacterExpression_EditorServices
         //config.Mode = (CharacterExpression_Jaw_Configuration_Mode)EditorGUILayout.EnumPopup("Mode", config.Mode);
         OnInspectorGUI_Jaw_ValueClamps(config);
         config.Axis = (CharacterExpression_Jaw_Configuration_Axis)EditorGUILayout.EnumPopup("Axis", config.Axis);
+        config.Offset = EditorGUILayout.FloatField("Offset 1", config.Offset);
         config.Amplitude = EditorGUILayout.FloatField("Amplitude 1", config.Amplitude);
         config.Frequency = EditorGUILayout.FloatField("Frequency 1", config.Frequency);
+        config.Offset2 = EditorGUILayout.FloatField("Offset 2", config.Offset2);
         config.Amplitude2 = EditorGUILayout.FloatField("Amplitude 2", config.Amplitude2);
         config.Frequency2 = EditorGUILayout.FloatField("Frequency 2", config.Frequency2);
         OnInspectorGUI_JawRange(config);
@@ -172,21 +174,21 @@ public static class CharacterExpression_EditorServices
     }
     private static float CosOfX2(float Frequency2, float Amplitude2, float x)
     {
-        return Mathf.Cos((x) * Frequency2) * Amplitude2;
+        return Mathf.Cos(x * Frequency2) * Amplitude2;
     }
     private static float SinOfX1(float Frequency1, float Amplitude1, float x)
     {
-        return Mathf.Sin((x) * Frequency1) * Amplitude1;
+        return Mathf.Sin(x * Frequency1) * Amplitude1;
     }
 
     private static float CosOfX(CharacterExpression_Jaw_Configuration config, float x)
     {
-        return Mathf.Cos(x * config.Frequency2) * config.Amplitude2;
+        return Mathf.Cos((x * config.Frequency2)+config.Offset2) * config.Amplitude2;
     }
 
     private static float SinOfX(CharacterExpression_Jaw_Configuration config, float x)
     {
-        return Mathf.Sin(x * config.Frequency) * config.Amplitude;
+        return Mathf.Sin((x * config.Frequency) + config.Offset2) * config.Amplitude;
     }
 
     private static void Graph_DrawBackground(Rect box)

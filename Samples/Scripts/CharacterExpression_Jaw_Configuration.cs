@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CharacterExpression_Jaw_Configuration : ScriptableObject {
     public Vector2 ValueClamp = new Vector2(0.0f, 1.0f);
+    public float Offset = 0.0f;
     public float Frequency = 1.0f;
     public float Amplitude = 1.0f;
+    public float Offset2 = 0.0f;
     public float Amplitude2 = 2.0f;
     public float Frequency2 = 1.5f;
     public Vector2 JawRange = new Vector2(0.0f, 9.0f);
