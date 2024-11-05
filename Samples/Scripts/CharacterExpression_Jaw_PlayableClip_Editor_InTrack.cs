@@ -1,5 +1,5 @@
 #if UNITY_EDITOR
-using Timeline.Samples;
+
 using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;
